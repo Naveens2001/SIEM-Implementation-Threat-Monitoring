@@ -1,35 +1,34 @@
-This project demonstrates the implementation of a Security Information and Event Management (SIEM) system using Wazuh integrated with Suricata for real-time threat detection and monitoring.
+This project demonstrates the implementation of a Security Information and Event Management (SIEM) system for centralized log monitoring, threat detection, and incident response using Wazuh and Suricata.
 
-**Technologies Used**
-Wazuh SIEM
-Suricata IDS
-Ubuntu & Windows Agents
-Docker (optional)
-ELK Stack (Wazuh Dashboard)
 
-**Architecture**
-Wazuh Server for log collection and analysis
-Windows & Ubuntu endpoints as agents
-Suricata for network intrusion detection
-Centralized dashboard for monitoring alerts
+**Key Features:**
 
- **Features**
-Centralized log monitoring
-Real-time threat detection
-Custom alert rules
-Integration of host-based and network-based security
-Incident analysis and response workflow
+Centralized log collection from Windows and Ubuntu agents
 
-**Detection Capabilities**
-SSH Brute Force Attacks
-SQL Injection Attempts
-Command Injection
-Suspicious IP Traffic
-Data Exfiltration Patterns
+Real-time threat detection using Suricata IDS
 
-**Project Setup**
-Install Wazuh Server
-Configure agents (Windows & Ubuntu)
-Install and configure Suricata
-Integrate Suricata logs into Wazuh
-Create custom detection rules
+Alert generation and correlation using Wazuh SIEM
+
+Dashboard visualization for security events
+
+Basic incident response and alert analysis
+
+
+**Tools & Technologies:**
+
+Wazuh (SIEM)
+
+Suricata (IDS)
+
+Ubuntu & Windows 11
+
+
+**Use Cases:**
+
+Unauthorized login detection
+
+Suspicious network traffic monitoring
+
+Log analysis and alert correlation
+
+Basic intrusion detection scenarios
