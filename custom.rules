@@ -1,0 +1,16 @@
+# Custom Suricata rules for enhanced network security monitoring
+
+# Detect potential SSH brute force attacks
+alert tcp any any -> $HOME_NET 22 (msg:"Potential SSH brute force attack"; flow:established; threshold:type threshold, track by_src, count 5, seconds 60; classtype:attempted-admin; sid:1000001; rev:1;)
+
+# Detect suspicious outbound connections to known malicious IPs
+alert ip $HOME_NET any -> any any (msg:"Connection to known malicious IP"; classtype:bad-unknown; sid:1000002; rev:1;)
+
+# Detect potential data exfiltration
+alert tcp $HOME_NET any -> any any (msg:"Large outbound data transfer"; flow:established; dsize:>10000; threshold:type threshold, track by_src, count 3, seconds 60; classtype:data-loss; sid:1000003; rev:1;)
+
+# Detect potential SQL injection attempts
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"SQL Injection attempt detected"; flow:established,to_server; content:"%27"; http_uri; content:"union"; http_uri; nocase; distance:0; classtype:web-application-attack; sid:1000004; rev:1;)
+
+# Detect potential command injection attempts
+alert http $EXTERNAL_NET any -> $HOME_NET any (msg:"Command Injection attempt detected"; flow:established,to_server; content:"|3b|"; http_uri; content:"cat"; http_uri; nocase; distance:0; classtype:web-application-attack; sid:1000005; rev:1;)

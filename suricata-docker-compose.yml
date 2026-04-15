@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  suricata:
+    image: jasonish/suricata:latest
+    container_name: suricata
+    restart: unless-stopped
+    network_mode: host
+    privileged: true
+    volumes:
+      - ./suricata.yaml:/etc/suricata/suricata.yaml:ro
+      - ./logs:/var/log/suricata
+      - ./rules:/etc/suricata/rules
+    command: >
+      -c /etc/suricata/suricata.yaml
+      -i eth0
+      --init-errors-fatal 
